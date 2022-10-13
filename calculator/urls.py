@@ -13,9 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from os import name
 from django.contrib import admin
 from django.urls import path
+from django.http import HttpResponse
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
+    # Uncomment the next line to enable the admin:
     path('admin/', admin.site.urls),
-]
+    path('', views.home, name = 'home'),
+    path('home/', views.home, name = 'home'),
+    path('results/', views.results, name ='results'),
+] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+
+
