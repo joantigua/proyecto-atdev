@@ -28,6 +28,6 @@ urlpatterns = [
     path('', views.home, name = 'home'),
     path('home/', views.home, name = 'home'),
     path('results/', views.results, name ='results'),
-] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+] 
 
 
